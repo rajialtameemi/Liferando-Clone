@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liferando Clone</title>
+    <link rel="stylesheet" href="styles1.css" />
+  </head>
+  <body onload="loadCart()">
+    <header>
+      <div class="logo">Liferando Clone</div>
+      <nav>
+        <ul>
+          <li><a href="#">Startseite</a></li>
+          <li><a href="#">Menü</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="title-section">
+      <img
+        src="/titelbild.jpg"
+        alt="Restaurant Titelbild"
+        class="title-photo"
+      />
+      <div class="profile-overlay">
+        <img
+          src="/probilebild.jpg"
+          alt="Restaurant Profil"
+          class="profile-photo"
+        />
+        <h1>Willkommen bei Raji Al-Tameemi</h1>
+        <p>Bewertung: ⭐⭐⭐⭐☆ (4.5)</p>
+        <p>Beschreibung: Ein tolles Restaurant mit leckeren Gerichten.</p>
+        <p>Lieferpreis: <span id="delivery-price">2.50</span>€</p>
+      </div>
+    </section>
+
+    <section class="category-slider">
+      <div class="category" onclick="scrollToSection('pizza')">Pizza</div>
+      <div class="category" onclick="scrollToSection('pasta')">Pasta</div>
+      <div class="category" onclick="scrollToSection('dessert')">Dessert</div>
+    </section>
+
+    <main>
+      <section id="pizza" class="menu">
+        <h2>Pizza</h2>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <img src="/piza1.jpg" alt="Pizza Margherita" class="food-photo" />
+            <h3>Pizza Margherita</h3>
+            <p>Preis: 10€</p>
+            <button
+              class="order-button"
+              onclick="addToCart('Pizza Margherita', 10)"
+            >
+              In den Warenkorb
+            </button>
+          </div>
+          <div class="menu-item">
+            <img src="/piza2.jpg" alt="Pizza Salami" class="food-photo" />
+            <h3>Pizza Salami</h3>
+            <p>Preis: 12€</p>
+            <button
+              class="order-button"
+              onclick="addToCart('Pizza Salami', 12)"
+            >
+              In den Warenkorb
+            </button>
+          </div>
+          <div class="menu-item">
+            <img src="/piza3.jpg" alt="Pizza Funghi" class="food-photo" />
+            <h3>Pizza Funghi</h3>
+            <p>Preis: 11€</p>
+            <button
+              class="order-button"
+              onclick="addToCart('Pizza Funghi', 11)"
+            >
+              In den Warenkorb
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="pasta" class="menu">
+        <h2>Pasta</h2>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <img
+              src="/spagi.jpg"
+              alt="Spaghetti Carbonara"
+              class="food-photo"
+            />
+            <h3>Spaghetti Carbonara</h3>
+            <p>Preis: 12€</p>
+            <button
+              class="order-button"
+              onclick="addToCart('Spaghetti Carbonara', 12)"
+            >
+              In den Warenkorb
+            </button>
+          </div>
+          <div class="menu-item">
+            <img src="/penne.jpg" alt="Penne Arrabbiata" class="food-photo" />
+            <h3>Penne Arrabbiata</h3>
+            <p>Preis: 10€</p>
+            <button
+              class="order-button"
+              onclick="addToCart('Penne Arrabbiata', 10)"
+            >
+              In den Warenkorb
+            </button>
+          </div>
+          <div class="menu-item">
+            <img src="/lasagne.jpg" alt="Lasagne" class="food-photo" />
+            <h3>Lasagne</h3>
+            <p>Preis: 13€</p>
+            <button class="order-button" onclick="addToCart('Lasagne', 13)">
+              In den Warenkorb
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="dessert" class="menu">
+        <h2>Dessert</h2>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <img src="/tiramisu.jpg" alt="Tiramisu" class="food-photo" />
+            <h3>Tiramisu</h3>
+            <p>Preis: 6€</p>
+            <button class="order-button" onclick="addToCart('Tiramisu', 6)">
+              In den Warenkorb
+            </button>
+          </div>
+          <div class="menu-item">
+            <img src="/panna-cotta.jpg" alt="Panna Cotta" class="food-photo" />
+            <h3>Panna Cotta</h3>
+            <p>Preis: 5€</p>
+            <button class="order-button" onclick="addToCart('Panna Cotta', 5)">
+              In den Warenkorb
+            </button>
+          </div>
+          <div class="menu-item">
+            <img
+              src="/profiteroles.jpeg"
+              alt="Profiteroles"
+              class="food-photo"
+            />
+            <h3>Profiteroles</h3>
+            <p>Preis: 7€</p>
+            <button class="order-button" onclick="addToCart('Profiteroles', 7)">
+              In den Warenkorb
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="cart" id="cart">
+        <h2>Ihr Warenkorb</h2>
+        <ul id="cart-items"></ul>
+        <p>Zwischensumme: €<span id="cart-subtotal">0</span></p>
+        <p>Lieferpreis: €<span id="cart-delivery">2.50</span></p>
+        <p>Gesamt: €<span id="cart-total">0</span></p>
+        <button class="checkout-button" onclick="checkout()">Zur Kasse</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Raji Al-Tameemmi. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <button id="cart-button" onclick="toggleCart()">
+      🛒 (<span id="cart-count">0</span>)
+    </button>
+
+    <script src="script1.js"></script>
+  </body>
+</html>
